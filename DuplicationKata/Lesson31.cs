@@ -10,12 +10,12 @@ namespace DuplicationKata
                     {
                         var nameStart = "L";
                         var checkNameStart = true;
-                        Func<string, string> SpecialGreeting = name => "Hip Hip Hooray! For ";
+                        Func<string, string> specialGreetingFunc = name => "Hip Hip Hooray! For ";
                         foreach (var name in names)
                         {
                             if (checkNameStart && name.StartsWith(nameStart))
                             {
-                                Sing(SpecialGreeting(name) + name);
+                                Sing(specialGreetingFunc(name) + name);
                             }
                             else
                             {
@@ -28,12 +28,12 @@ namespace DuplicationKata
                     {
                         var nameStart = "a";
                         var checkNameStart = true;
-                        Func<string, string> SpecialGreeting = name => name.ToUpperInvariant() + "! Yay ";
+                        Func<string, string> specialGreetingFunc = name => name.ToUpperInvariant() + "! Yay ";
                         foreach (var name in names)
                         {
                             if (checkNameStart && name.Contains(nameStart))
                             {
-                                Sing(SpecialGreeting(name) + name + "!");
+                                Sing(specialGreetingFunc(name) + name + "!");
                             }
                             else
                             {
@@ -46,12 +46,12 @@ namespace DuplicationKata
                 {
                     var nameStart = "Don't care";
                     var checkNameStart = false;
-                    Func<string, string> SpecialGreeting = name => "No special greeting";
+                    Func<string, string> specialGreetingFunc = name => "No special greeting";
                     foreach (var name in names)
                     {
                         if (checkNameStart && name.StartsWith(nameStart))
                         {
-                            Sing(SpecialGreeting(name) + name);
+                            Sing(specialGreetingFunc(name) + name);
                         }
                         else
                         {
