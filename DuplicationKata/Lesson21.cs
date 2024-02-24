@@ -10,13 +10,11 @@ namespace DuplicationKata
                     {
                         SingRefrain(names, true, "L", "Hip Hip Hooray! For ");
                     }
-
                     break;
                 case 2:
                     {
                         SingRefrain(names, true, "Sam", "Say yeah! Say yo! Say ");
                     }
-
                     break;
                 case 3:
                     {
