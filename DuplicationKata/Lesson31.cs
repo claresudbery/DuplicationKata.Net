@@ -33,7 +33,10 @@ namespace DuplicationKata
             }
         }
 
-        private void SingRefrain(string[] names, bool checkNameStart, string nameStart, Func<string, string> specialGreetingFunc)
+        private void SingRefrain(string[] names, 
+            bool checkNameStart, 
+            string nameStart, 
+            Func<string, string> specialGreetingFunc)
         {
             foreach (var name in names)
             {
