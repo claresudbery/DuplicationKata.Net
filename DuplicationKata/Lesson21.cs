@@ -20,7 +20,7 @@ namespace DuplicationKata
                     break;
                 case 3:
                     {
-                        SingRefrain(names, false, "L", "Hip Hip Hooray! For ");
+                        SingRefrain(names, false, "L", "No special greeting");
                     }
                     break;
             }
