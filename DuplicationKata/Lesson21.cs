@@ -7,9 +7,10 @@ namespace DuplicationKata
             switch (style)
             {
                 case 1:
+                    
                     foreach (var name in names)
                     {
-                        if (name.StartsWith("L"))
+                        if (true && name.StartsWith("L"))
                         {
                             Sing("Hip Hip Hooray! For " + name);
                         }
@@ -18,11 +19,13 @@ namespace DuplicationKata
                             Sing("Hello " + name + ", it's nice to meet you.");
                         }
                     }
+                    
                     break;
                 case 2:
+                    
                     foreach (var name in names)
                     {
-                        if (name.StartsWith("Sam"))
+                        if (true && name.StartsWith("Sam"))
                         {
                             Sing("Say yeah! Say yo! Say " + name);
                         }
@@ -31,12 +34,22 @@ namespace DuplicationKata
                             Sing("Hello " + name + ", it's nice to meet you.");
                         }
                     }
+                    
                     break;
                 case 3:
+                    
                     foreach (var name in names)
                     {
-                        Sing("Hello " + name + ", it's nice to meet you.");
+                        if (false && name.StartsWith("L"))
+                        {
+                            Sing("Hip Hip Hooray! For " + name);
+                        }
+                        else
+                        {
+                            Sing("Hello " + name + ", it's nice to meet you.");
+                        }
                     }
+                    
                     break;
             }
         }
