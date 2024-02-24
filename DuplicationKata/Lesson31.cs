@@ -35,14 +35,14 @@ namespace DuplicationKata
 
         private void SingRefrain(string[] names, 
             string nameStart, 
-            Func<string, string> specialGreetingFunc, 
-            bool checkNameStart)
+            Func<string, string>? specialGreetingFunc = null, 
+            bool checkNameStart = false)
         {
             foreach (var name in names)
             {
                 if (checkNameStart && name.StartsWith(nameStart))
                 {
-                    Sing(specialGreetingFunc(name) + name);
+                    Sing(specialGreetingFunc?.Invoke(name) + name);
                 }
                 else
                 {
