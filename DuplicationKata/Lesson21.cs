@@ -26,11 +26,11 @@ namespace DuplicationKata
             }
         }
 
-        private void SingRefrain(string[] names, bool dummyBool, string nameStart, string specialGreeting)
+        private void SingRefrain(string[] names, bool checkNameStart, string nameStart, string specialGreeting)
         {
             foreach (var name in names)
             {
-                if (dummyBool && name.StartsWith(nameStart))
+                if (checkNameStart && name.StartsWith(nameStart))
                 {
                     Sing(specialGreeting + name);
                 }
