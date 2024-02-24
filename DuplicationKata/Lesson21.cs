@@ -11,17 +11,7 @@ namespace DuplicationKata
                         var dummyBool = true;
                         var nameStart = "L";
                         var specialGreeting = "Hip Hip Hooray! For ";
-                        foreach (var name in names)
-                        {
-                            if (dummyBool && name.StartsWith(nameStart))
-                            {
-                                Sing(specialGreeting + name);
-                            }
-                            else
-                            {
-                                Sing("Hello " + name + ", it's nice to meet you.");
-                            }
-                        }
+                        SingRefrain(names, dummyBool, nameStart, specialGreeting);
                     }
 
                     break;
@@ -30,17 +20,7 @@ namespace DuplicationKata
                         var dummyBool = true;
                         var specialGreeting = "Say yeah! Say yo! Say ";
                         var nameStart = "Sam";
-                        foreach (var name in names)
-                        {
-                            if (dummyBool && name.StartsWith(nameStart))
-                            {
-                                Sing(specialGreeting + name);
-                            }
-                            else
-                            {
-                                Sing("Hello " + name + ", it's nice to meet you.");
-                            }
-                        }
+                        SingRefrain2(names, dummyBool, nameStart, specialGreeting);
                     }
 
                     break;
@@ -49,19 +29,54 @@ namespace DuplicationKata
                         var dummyBool = false;
                         var nameStart = "L";
                         var specialGreeting = "Hip Hip Hooray! For ";
-                        foreach (var name in names)
-                        {
-                            if (dummyBool && name.StartsWith(nameStart))
-                            {
-                                Sing(specialGreeting + name);
-                            }
-                            else
-                            {
-                                Sing("Hello " + name + ", it's nice to meet you.");
-                            }
-                        }
+                        SingRefrain3(names, dummyBool, nameStart, specialGreeting);
                     }
                     break;
+            }
+        }
+
+        private void SingRefrain3(string[] names, bool dummyBool, string nameStart, string specialGreeting)
+        {
+            foreach (var name in names)
+            {
+                if (dummyBool && name.StartsWith(nameStart))
+                {
+                    Sing(specialGreeting + name);
+                }
+                else
+                {
+                    Sing("Hello " + name + ", it's nice to meet you.");
+                }
+            }
+        }
+
+        private void SingRefrain2(string[] names, bool dummyBool, string nameStart, string specialGreeting)
+        {
+            foreach (var name in names)
+            {
+                if (dummyBool && name.StartsWith(nameStart))
+                {
+                    Sing(specialGreeting + name);
+                }
+                else
+                {
+                    Sing("Hello " + name + ", it's nice to meet you.");
+                }
+            }
+        }
+
+        private void SingRefrain(string[] names, bool dummyBool, string nameStart, string specialGreeting)
+        {
+            foreach (var name in names)
+            {
+                if (dummyBool && name.StartsWith(nameStart))
+                {
+                    Sing(specialGreeting + name);
+                }
+                else
+                {
+                    Sing("Hello " + name + ", it's nice to meet you.");
+                }
             }
         }
     }
