@@ -18,7 +18,7 @@ namespace DuplicationKata
                     break;
                 case 3:
                     {
-                        SingRefrain(names, false, "L", "No special greeting");
+                        SingRefrain(names, false);
                     }
                     break;
             }
