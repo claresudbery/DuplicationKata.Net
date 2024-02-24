@@ -10,9 +10,9 @@ namespace DuplicationKata
                     {
                         var nameStart = "L";
                         var checkNameStart = true;
+                        Func<string, string> SpecialGreeting = name => "Hip Hip Hooray! For ";
                         foreach (var name in names)
                         {
-                            Func<string, string> SpecialGreeting = name => "Hip Hip Hooray! For ";
                             if (checkNameStart && name.StartsWith(nameStart))
                             {
                                 Sing(SpecialGreeting(name) + name);
@@ -28,9 +28,9 @@ namespace DuplicationKata
                     {
                         var nameStart = "a";
                         var checkNameStart = true;
+                        Func<string, string> SpecialGreeting = name => name.ToUpperInvariant() + "! Yay ";
                         foreach (var name in names)
                         {
-                            Func<string, string> SpecialGreeting = name => name.ToUpperInvariant() + "! Yay ";
                             if (checkNameStart && name.Contains(nameStart))
                             {
                                 Sing(SpecialGreeting(name) + name + "!");
@@ -46,9 +46,9 @@ namespace DuplicationKata
                 {
                     var nameStart = "Don't care";
                     var checkNameStart = false;
+                    Func<string, string> SpecialGreeting = name => "No special greeting";
                     foreach (var name in names)
                     {
-                        Func<string, string> SpecialGreeting = name => "No special greeting";
                         if (checkNameStart && name.StartsWith(nameStart))
                         {
                             Sing(SpecialGreeting(name) + name);
