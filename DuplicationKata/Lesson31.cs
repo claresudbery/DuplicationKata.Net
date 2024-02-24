@@ -23,12 +23,12 @@ namespace DuplicationKata
                     }
                     break;
                 case 3:
-                {
-                    var nameStart = "Don't care";
-                    var checkNameStart = false;
-                    Func<string, string> specialGreetingFunc = name => "No special greeting";
-                    SingRefrain(names, checkNameStart, nameStart, specialGreetingFunc);
-                }
+                    {
+                        var nameStart = "Don't care";
+                        var checkNameStart = false;
+                        Func<string, string> specialGreetingFunc = name => "No special greeting";
+                        SingRefrain(names, checkNameStart, nameStart, specialGreetingFunc);
+                    }
                     break;
             }
         }
