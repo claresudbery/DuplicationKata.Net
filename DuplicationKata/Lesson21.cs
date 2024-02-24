@@ -10,9 +10,12 @@ namespace DuplicationKata
                     
                     foreach (var name in names)
                     {
-                        if (true && name.StartsWith("L"))
+                        var dummyBool = true;
+                        var nameStart = "L";
+                        var specialGreeting = "Hip Hip Hooray! For ";
+                        if (dummyBool && name.StartsWith(nameStart))
                         {
-                            Sing("Hip Hip Hooray! For " + name);
+                            Sing(specialGreeting + name);
                         }
                         else
                         {
@@ -25,9 +28,12 @@ namespace DuplicationKata
                     
                     foreach (var name in names)
                     {
-                        if (true && name.StartsWith("Sam"))
+                        var dummyBool = true;
+                        var specialGreeting = "Say yeah! Say yo! Say ";
+                        var nameStart = "Sam";
+                        if (dummyBool && name.StartsWith(nameStart))
                         {
-                            Sing("Say yeah! Say yo! Say " + name);
+                            Sing(specialGreeting + name);
                         }
                         else
                         {
@@ -40,9 +46,12 @@ namespace DuplicationKata
                     
                     foreach (var name in names)
                     {
-                        if (false && name.StartsWith("L"))
+                        var dummyBool = false;
+                        var nameStart = "L";
+                        var specialGreeting = "Hip Hip Hooray! For ";
+                        if (dummyBool && name.StartsWith(nameStart))
                         {
-                            Sing("Hip Hip Hooray! For " + name);
+                            Sing(specialGreeting + name);
                         }
                         else
                         {
