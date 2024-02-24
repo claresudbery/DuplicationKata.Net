@@ -8,28 +8,19 @@ namespace DuplicationKata
             {
                 case 1:
                     {
-                        var dummyBool = true;
-                        var nameStart = "L";
-                        var specialGreeting = "Hip Hip Hooray! For ";
-                        SingRefrain(names, dummyBool, nameStart, specialGreeting);
+                        SingRefrain(names, true, "L", "Hip Hip Hooray! For ");
                     }
 
                     break;
                 case 2:
                     {
-                        var dummyBool = true;
-                        var specialGreeting = "Say yeah! Say yo! Say ";
-                        var nameStart = "Sam";
-                        SingRefrain(names, dummyBool, nameStart, specialGreeting);
+                        SingRefrain(names, true, "Sam", "Say yeah! Say yo! Say ");
                     }
 
                     break;
                 case 3:
                     {
-                        var dummyBool = false;
-                        var nameStart = "L";
-                        var specialGreeting = "Hip Hip Hooray! For ";
-                        SingRefrain(names, dummyBool, nameStart, specialGreeting);
+                        SingRefrain(names, false, "L", "Hip Hip Hooray! For ");
                     }
                     break;
             }
