@@ -8,26 +8,17 @@ namespace DuplicationKata
             {
                 case 1:
                     {
-                        var nameStart = "L";
-                        var checkNameStart = true;
-                        Func<string, string> specialGreetingFunc = name => "Hip Hip Hooray! For ";
-                        SingRefrain(names, checkNameStart, nameStart, specialGreetingFunc);
+                        SingRefrain(names, true, "L", name => "Hip Hip Hooray! For ");
                     }
                     break;
                 case 2:
                     {
-                        var nameStart = "a";
-                        var checkNameStart = true;
-                        Func<string, string> specialGreetingFunc = name => name.ToUpperInvariant() + "! Yay ";
-                        SingRefrain(names, checkNameStart, nameStart, specialGreetingFunc);
+                        SingRefrain(names, true, "a", name => name.ToUpperInvariant() + "! Yay ");
                     }
                     break;
                 case 3:
                     {
-                        var nameStart = "Don't care";
-                        var checkNameStart = false;
-                        Func<string, string> specialGreetingFunc = name => "No special greeting";
-                        SingRefrain(names, checkNameStart, nameStart, specialGreetingFunc);
+                        SingRefrain(names, false, "Don't care", name => "No special greeting");
                     }
                     break;
             }
