@@ -26,8 +26,8 @@ namespace DuplicationKata
 
         private void SingRefrain(string[] names, 
             bool checkNameStart, 
-            string nameStart, 
-            string specialGreeting)
+            string nameStart = "Irrelevant", 
+            string specialGreeting = "No special greeting")
         {
             foreach (var name in names)
             {
