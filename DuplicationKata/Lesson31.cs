@@ -9,34 +9,34 @@ namespace DuplicationKata
                 case 1:
                     {
                         SingRefrain(names, 
+                            true, 
                             "L", 
-                            name => "Hip Hip Hooray! For ", 
-                            true);
+                            name => "Hip Hip Hooray! For ");
                     }
                     break;
                 case 2:
                     {
                         SingRefrain(names, 
+                            true, 
                             "a", 
-                            name => name.ToUpperInvariant() + "! Yay ", 
-                            true);
+                            name => name.ToUpperInvariant() + "! Yay ");
                     }
                     break;
                 case 3:
                     {
                         SingRefrain(names, 
+                            false, 
                             "Don't care", 
-                            name => "No special greeting", 
-                            false);
+                            name => "No special greeting");
                     }
                     break;
             }
         }
 
         private void SingRefrain(string[] names, 
+            bool checkNameStart, 
             string nameStart, 
-            Func<string, string>? specialGreetingFunc = null, 
-            bool checkNameStart = false)
+            Func<string, string>? specialGreetingFunc = null)
         {
             foreach (var name in names)
             {
