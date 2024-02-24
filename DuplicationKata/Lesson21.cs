@@ -11,7 +11,7 @@ namespace DuplicationKata
                     {
                         if (name.StartsWith("L"))
                         {
-                            Sing("Hip Hip Horray! For " + name);
+                            Sing("Hip Hip Hooray! For " + name);
                         }
                         else
                         {
