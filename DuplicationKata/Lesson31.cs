@@ -7,36 +7,58 @@ namespace DuplicationKata
             switch (style)
             {
                 case 1:
-                    foreach (var name in names)
                     {
-                        if (name.StartsWith("L"))
+                        var nameStart = "L";
+                        var checkNameStart = true;
+                        var specialGreeting = "Hip Hip Hooray! For ";
+                        foreach (var name in names)
                         {
-                            Sing("Hip Hip Hooray! For " + name);
-                        }
-                        else
-                        {
-                            Sing("Hello " + name + ", it's nice to meet you.");
+                            if (checkNameStart && name.StartsWith(nameStart))
+                            {
+                                Sing(specialGreeting + name);
+                            }
+                            else
+                            {
+                                Sing("Hello " + name + ", it's nice to meet you.");
+                            }
                         }
                     }
                     break;
                 case 2:
+                    {
+                        var nameStart = "a";
+                        var checkNameStart = true;
+                        foreach (var name in names)
+                        {
+                            var specialGreeting = name.ToUpperInvariant() + "! Yay ";
+                            if (checkNameStart && name.Contains(nameStart))
+                            {
+                                Sing(specialGreeting + name + "!");
+                            }
+                            else
+                            {
+                                Sing("Hello " + name + ", it's nice to meet you.");
+                            }
+                        }
+                    }
+                    break;
+                case 3:
+                {
+                    var nameStart = "Don't care";
+                    var checkNameStart = false;
+                    var specialGreeting = "No special greeting";
                     foreach (var name in names)
                     {
-                        if (name.Contains("a"))
+                        if (checkNameStart && name.StartsWith(nameStart))
                         {
-                            Sing(name.ToUpperInvariant() + "! Yay " + name + "!");
+                            Sing(specialGreeting + name);
                         }
                         else
                         {
                             Sing("Hello " + name + ", it's nice to meet you.");
                         }
                     }
-                    break;
-                case 3:
-                    foreach (var name in names)
-                    {
-                        Sing("Hello " + name + ", it's nice to meet you.");
-                    }
+                }
                     break;
             }
         }
