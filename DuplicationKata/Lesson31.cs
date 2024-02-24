@@ -30,7 +30,8 @@ namespace DuplicationKata
                         var checkNameStart = true;
                         foreach (var name in names)
                         {
-                            var specialGreeting = name.ToUpperInvariant() + "! Yay ";
+                            Func<string, string> SpecialGreeting = name => name.ToUpperInvariant() + "! Yay ";
+                            var specialGreeting = SpecialGreeting(name);
                             if (checkNameStart && name.Contains(nameStart))
                             {
                                 Sing(specialGreeting + name + "!");
