@@ -8,17 +8,26 @@ namespace DuplicationKata
             {
                 case 1:
                     {
-                        SingRefrain(names, true, "L", name => "Hip Hip Hooray! For ");
+                        SingRefrain(names, 
+                            true, 
+                            "L", 
+                            name => "Hip Hip Hooray! For ");
                     }
                     break;
                 case 2:
                     {
-                        SingRefrain(names, true, "a", name => name.ToUpperInvariant() + "! Yay ");
+                        SingRefrain(names, 
+                            true, 
+                            "a", 
+                            name => name.ToUpperInvariant() + "! Yay ");
                     }
                     break;
                 case 3:
                     {
-                        SingRefrain(names, false, "Don't care", name => "No special greeting");
+                        SingRefrain(names, 
+                            false, 
+                            "Don't care", 
+                            name => "No special greeting");
                     }
                     break;
             }
