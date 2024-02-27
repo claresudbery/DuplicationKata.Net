@@ -61,18 +61,19 @@ namespace DuplicationKata.Regression
         {
             CombinationApprovals.VerifyAllCombinations(
                 GetSegmentIndex,
-                new LineListType[] { LineListType.DestinationVertical },
-                new List<LineSegment>[] {new List<LineSegment>(){new LineSegment{
-                        StartPoint = new Point { X = 2, Y = 3 },
-                        EndPoint = new Point { X = 2, Y = 3 },
-                        GenerationPoint = new Point { X = 2, Y = 3 }}}},
-                new Point[] { new Point { X = 2, Y = 3 } });
+                new LineList[] {new LineList(
+                    LineListType.DestinationVertical,
+                    new List<LineSegment>(){new LineSegment{
+                            StartPoint = new Point { X = 2, Y = 3 },
+                            EndPoint = new Point { X = 2, Y = 3 },
+                            GenerationPoint = new Point { X = 2, Y = 3 }}},
+                    new Point { X = 2, Y = 3 })});
         }
 
-        private static string GetSegmentIndex(LineListType lineListType, List<LineSegment> lineSegments, Point point)
+        private static string GetSegmentIndex(LineList lineList)
         {
             var indexCalculator = new Lesson32();
-            return indexCalculator.GetSegmentIndex(lineListType, lineSegments, point).ToString();
+            return indexCalculator.GetSegmentIndex(lineList).ToString();
         }
     }
 }

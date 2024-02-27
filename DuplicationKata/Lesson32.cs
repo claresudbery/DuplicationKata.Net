@@ -4,19 +4,18 @@ namespace DuplicationKata
 {
     public class Lesson32
     {
-        public int GetSegmentIndex(
-            LineListType listType, 
-            List<LineSegment> lineSegments,
-            Point point)
+        public int GetSegmentIndex(LineList lineList)
         {
             int segmentIndex = 0;
 
-            if (listType == LineListType.SourceHorizontal || listType == LineListType.DestinationHorizontal)
+            if (lineList.Type == LineListType.SourceHorizontal || lineList.Type == LineListType.DestinationHorizontal)
             {
-                for (int i = 0; i < lineSegments.Count; ++i)
+                for (int i = 0; i < lineList.Segments.Count; ++i)
                 {
-                    var lineSegment = lineSegments[i];
-                    if (lineSegment.GenerationPoint.X == point.X && point.Y >= lineSegment.StartPoint.Y && point.Y <= lineSegment.EndPoint.Y)
+                    var lineSegment = lineList.Segments[i];
+                    if (lineSegment.GenerationPoint.X == lineList.Point.X 
+                        && lineList.Point.Y >= lineSegment.StartPoint.Y 
+                        && lineList.Point.Y <= lineSegment.EndPoint.Y)
                     {
                         segmentIndex = i;
                         break;
@@ -25,10 +24,12 @@ namespace DuplicationKata
             }
             else
             {
-                for (int i = 0; i < lineSegments.Count; ++i)
+                for (int i = 0; i < lineList.Segments.Count; ++i)
                 {
-                    var lineSegment = lineSegments[i];
-                    if (lineSegment.GenerationPoint.Y == point.Y && point.X >= lineSegment.StartPoint.X && point.X <= lineSegment.EndPoint.X)
+                    var lineSegment = lineList.Segments[i];
+                    if (lineSegment.GenerationPoint.Y == lineList.Point.Y 
+                        && lineList.Point.X >= lineSegment.StartPoint.X 
+                        && lineList.Point.X <= lineSegment.EndPoint.X)
                     {
                         segmentIndex = i;
                         break;
@@ -37,6 +38,20 @@ namespace DuplicationKata
             }
 
             return segmentIndex;
+        }
+    }
+
+    public class LineList
+    {
+        public LineListType Type { get; }
+        public List<LineSegment> Segments { get; }
+        public Point Point { get; }
+
+        public LineList(LineListType listType, List<LineSegment> lineSegments, Point point)
+        {
+            Type = listType;
+            Segments = lineSegments;
+            Point = point;
         }
     }
 
