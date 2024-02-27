@@ -43,13 +43,14 @@ namespace DuplicationKata
     public enum LineListType
     {
         SourceHorizontal,
-        DestinationHorizontal
+        DestinationHorizontal,
+        DestinationVertical
     }
 
     public class LineSegment
     {
-        public Point GenerationPoint { get; set; }
         public Point StartPoint { get; set; }
         public Point EndPoint { get; set; }
+        public Point GenerationPoint { get; set; }
     }
 }

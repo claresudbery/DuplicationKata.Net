@@ -1,4 +1,5 @@
-﻿using ApprovalTests;
+﻿using System.Drawing;
+using ApprovalTests;
 using ApprovalTests.Reporters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -52,6 +53,30 @@ namespace DuplicationKata.Regression
             song.SingSong(2, names);
             song.SingSong(3, names);
             Approvals.Verify(song.song + "\n");
+        }
+
+        [TestMethod]
+        public void test32()
+        {
+            // Arrange
+            var indexCalculator = new Lesson32();
+            LineListType listType = LineListType.DestinationVertical;
+            List<LineSegment> lineSegments = new List<LineSegment>()
+            {
+                new LineSegment
+                {
+                    StartPoint = new Point { X = 2, Y = 3 },
+                    EndPoint = new Point { X = 2, Y = 3 },
+                    GenerationPoint = new Point { X = 2, Y = 3 }
+                }
+            };
+            Point point = new Point { X = 2, Y = 3 };
+            
+            // Act
+            var result = indexCalculator.GetSegmentIndex(listType, lineSegments, point);
+            
+            // Assert
+            Approvals.Verify(result);
         }
     }
 }
