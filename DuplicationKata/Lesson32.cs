@@ -1,5 +1,4 @@
 using System.Drawing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DuplicationKata
 {
@@ -17,18 +16,7 @@ namespace DuplicationKata
                 for (int i = 0; i < lineSegments.Count; ++i)
                 {
                     var lineSegment = lineSegments[i];
-                    Func<Point, int> BlueFunc = point => point.X;
-                    Func<Point, int> YellowFunc = point => point.Y;
-
-                    var generationPointX = BlueFunc(lineSegment.GenerationPoint);
-                    var pointX = BlueFunc(point);
-                    var pointY = YellowFunc(point);
-                    var startPointY = YellowFunc(lineSegment.StartPoint);
-                    var endPointY = YellowFunc(lineSegment.EndPoint);
-
-                    if (generationPointX == pointX
-                        && pointY >= startPointY
-                        && pointY <= endPointY)
+                    if (lineSegment.GenerationPoint.X == point.X && point.Y >= lineSegment.StartPoint.Y && point.Y <= lineSegment.EndPoint.Y)
                     {
                         segmentIndex = i;
                         break;
@@ -40,9 +28,7 @@ namespace DuplicationKata
                 for (int i = 0; i < lineSegments.Count; ++i)
                 {
                     var lineSegment = lineSegments[i];
-                    if (lineSegment.GenerationPoint.Y == point.Y
-                        && point.X >= lineSegment.StartPoint.X
-                        && point.X <= lineSegment.EndPoint.X)
+                    if (lineSegment.GenerationPoint.Y == point.Y && point.X >= lineSegment.StartPoint.X && point.X <= lineSegment.EndPoint.X)
                     {
                         segmentIndex = i;
                         break;
