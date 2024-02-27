@@ -1,75 +1,177 @@
 using System.Drawing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DuplicationKata;
-using Xunit;
-
-public class Lesson32
+namespace DuplicationKata
 {
-    [Fact]
-    public void MyTestV1()
+    public class Lesson32
     {
-        Point point = new Point();
-        int segmentIndex = 0;
-        List<LineSegment> lineSegments = new List<LineSegment>();
-            
-        if(lineSegments.Count > 0)
+        public int GetSegmentIndex(
+            LineListType listType, 
+            List<LineSegment> lineSegments,
+            Point point)
         {
-            for(int i = 0; i < lineSegments.Count; ++i)
+            int segmentIndex = 0;
+
+            if (listType == LineListType.SourceHorizontal || listType == LineListType.DestinationHorizontal)
             {
-                var lineSegment = lineSegments[i];
+                for (int i = 0; i < lineSegments.Count; ++i)
+                {
+                    var lineSegment = lineSegments[i];
+                    if (lineSegment.GenerationPoint.X == point.X && point.Y >= lineSegment.StartPoint.Y && point.Y <= lineSegment.EndPoint.Y)
+                    {
+                        segmentIndex = i;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < lineSegments.Count; ++i)
+                {
+                    var lineSegment = lineSegments[i];
+                    if (lineSegment.GenerationPoint.Y == point.Y && point.X >= lineSegment.StartPoint.X && point.X <= lineSegment.EndPoint.X)
+                    {
+                        segmentIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            return segmentIndex;
+        }
+        
+        public int GetSegmentIndex_Refactored_V1(
+            LineListType listType, 
+            List<LineSegment> lineSegments,
+            Point point)
+        {
+            int segmentIndex = 0;
+
+            if (listType == LineListType.SourceHorizontal || listType == LineListType.DestinationHorizontal)
+            {
+                for (int i = 0; i < lineSegments.Count; ++i)
+                {
+                    var lineSegment = lineSegments[i];
+                    Func<Point, int> BlueFunc = point => point.X;
+                    Func<Point, int> YellowFunc = point => point.Y;
+
+                    var generationPointX = BlueFunc(lineSegment.GenerationPoint);
+                    var pointX = BlueFunc(point);
+                    var pointY = YellowFunc(point);
+                    var startPointY = YellowFunc(lineSegment.StartPoint);
+                    var endPointY = YellowFunc(lineSegment.EndPoint);
+
+                    if (generationPointX == pointX
+                        && pointY >= startPointY
+                        && pointY <= endPointY)
+                    {
+                        segmentIndex = i;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < lineSegments.Count; ++i)
+                {
+                    var lineSegment = lineSegments[i];
+                    if (lineSegment.GenerationPoint.Y == point.Y
+                        && point.X >= lineSegment.StartPoint.X
+                        && point.X <= lineSegment.EndPoint.X)
+                    {
+                        segmentIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            return segmentIndex;
+        }
+        
+        public int GetSegmentIndex_Refactored_V2(
+            LineListType listType, 
+            List<LineSegment> lineSegments,
+            Point point)
+        {
+            int segmentIndex = 0;
+
+            if (listType == LineListType.SourceHorizontal || listType == LineListType.DestinationHorizontal)
+            {
                 Func<Point, int> BlueFunc = point => point.X;
                 Func<Point, int> YellowFunc = point => point.Y;
 
-                var generationPointX = BlueFunc(lineSegment.GenerationPoint);
-                var pointX = BlueFunc(point);
-                var pointY = YellowFunc(point);
-                var startPointY = YellowFunc(lineSegment.StartPoint);
-                var endPointY = YellowFunc(lineSegment.EndPoint);
-                
-                if (generationPointX == pointX 
-                    && pointY >= startPointY
-                    && pointY <= endPointY)
+                for (int i = 0; i < lineSegments.Count; ++i)
                 {
-                    segmentIndex = i;
-                    break;
+                    var lineSegment = lineSegments[i];
+                    if (BlueFunc(lineSegment.GenerationPoint) == BlueFunc(point)
+                        && YellowFunc(point) >= YellowFunc(lineSegment.StartPoint)
+                        && YellowFunc(point) <= YellowFunc(lineSegment.EndPoint))
+                    {
+                        segmentIndex = i;
+                        break;
+                    }
                 }
             }
-        }
-        else
-        {
-            for(int i = 0; i < lineSegments.Count; ++i)
+            else
             {
-                var lineSegment = lineSegments[i];
-                if (lineSegment.GenerationPoint.Y == point.Y 
-                    && point.X >= lineSegment.StartPoint.X
-                    && point.X <= lineSegment.EndPoint.X)
+                for (int i = 0; i < lineSegments.Count; ++i)
                 {
-                    segmentIndex = i;
-                    break;
+                    var lineSegment = lineSegments[i];
+                    if (lineSegment.GenerationPoint.Y == point.Y
+                        && point.X >= lineSegment.StartPoint.X
+                        && point.X <= lineSegment.EndPoint.X)
+                    {
+                        segmentIndex = i;
+                        break;
+                    }
                 }
             }
+
+            return segmentIndex;
         }
 
-        Assert.Equals(segmentIndex, 10);
-    }
-    
-    [Fact]
-    public void MyTestV2()
-    {
-        Point point = new Point();
-        int segmentIndex = 0;
-        List<LineSegment> lineSegments = new List<LineSegment>();
-            
-        if(lineSegments.Count > 0)
+        public int GetSegmentIndex_Refactored_V3(
+            LineListType listType, 
+            List<LineSegment> lineSegments,
+            Point point)
         {
-            Func<Point, int> BlueFunc = point => point.X;
-            Func<Point, int> YellowFunc = point => point.Y;
-            
-            for(int i = 0; i < lineSegments.Count; ++i)
+            int segmentIndex = 0;
+
+            if (listType == LineListType.SourceHorizontal || listType == LineListType.DestinationHorizontal)
+            {
+                Func<Point, int> BlueFunc = point => point.X;
+                Func<Point, int> YellowFunc = point => point.Y;
+
+                segmentIndex = SegmentIndex(lineSegments, BlueFunc, point, YellowFunc, segmentIndex);
+            }
+            else
+            {
+                for (int i = 0; i < lineSegments.Count; ++i)
+                {
+                    var lineSegment = lineSegments[i];
+                    if (lineSegment.GenerationPoint.Y == point.Y
+                        && point.X >= lineSegment.StartPoint.X
+                        && point.X <= lineSegment.EndPoint.X)
+                    {
+                        segmentIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            return segmentIndex;
+        }
+
+        private static int SegmentIndex(
+            List<LineSegment> lineSegments,
+            Func<Point, int> BlueFunc,
+            Point point,
+            Func<Point, int> YellowFunc,
+            int segmentIndex)
+        {
+            for (int i = 0; i < lineSegments.Count; ++i)
             {
                 var lineSegment = lineSegments[i];
-                if (BlueFunc(lineSegment.GenerationPoint) == BlueFunc(point) 
+                if (BlueFunc(lineSegment.GenerationPoint) == BlueFunc(point)
                     && YellowFunc(point) >= YellowFunc(lineSegment.StartPoint)
                     && YellowFunc(point) <= YellowFunc(lineSegment.EndPoint))
                 {
@@ -77,83 +179,21 @@ public class Lesson32
                     break;
                 }
             }
-        }
-        else
-        {
-            for(int i = 0; i < lineSegments.Count; ++i)
-            {
-                var lineSegment = lineSegments[i];
-                if (lineSegment.GenerationPoint.Y == point.Y 
-                    && point.X >= lineSegment.StartPoint.X
-                    && point.X <= lineSegment.EndPoint.X)
-                {
-                    segmentIndex = i;
-                    break;
-                }
-            }
-        }
 
-        Assert.Equals(segmentIndex, 10);
+            return segmentIndex;
+        }
     }
-    
-    [Fact]
-    public void MyTestV3()
+
+    public enum LineListType
     {
-        Point point = new Point();
-        int segmentIndex = 0;
-        List<LineSegment> lineSegments = new List<LineSegment>();
-            
-        if(lineSegments.Count > 0)
-        {
-            Func<Point, int> BlueFunc = point => point.X;
-            Func<Point, int> YellowFunc = point => point.Y;
-            
-            segmentIndex = SegmentIndex(lineSegments, BlueFunc, point, YellowFunc, segmentIndex);
-        }
-        else
-        {
-            for(int i = 0; i < lineSegments.Count; ++i)
-            {
-                var lineSegment = lineSegments[i];
-                if (lineSegment.GenerationPoint.Y == point.Y 
-                    && point.X >= lineSegment.StartPoint.X
-                    && point.X <= lineSegment.EndPoint.X)
-                {
-                    segmentIndex = i;
-                    break;
-                }
-            }
-        }
-
-        Assert.Equals(segmentIndex, 10);
+        SourceHorizontal,
+        DestinationHorizontal
     }
 
-    private static int SegmentIndex(
-        List<LineSegment> lineSegments, 
-        Func<Point, int> BlueFunc, 
-        Point point, 
-        Func<Point, int> YellowFunc, 
-        int segmentIndex)
+    public class LineSegment
     {
-        for (int i = 0; i < lineSegments.Count; ++i)
-        {
-            var lineSegment = lineSegments[i];
-            if (BlueFunc(lineSegment.GenerationPoint) == BlueFunc(point)
-                && YellowFunc(point) >= YellowFunc(lineSegment.StartPoint)
-                && YellowFunc(point) <= YellowFunc(lineSegment.EndPoint))
-            {
-                segmentIndex = i;
-                break;
-            }
-        }
-
-        return segmentIndex;
+        public Point GenerationPoint { get; set; }
+        public Point StartPoint { get; set; }
+        public Point EndPoint { get; set; }
     }
-}
-
-public class LineSegment
-{
-    public Point GenerationPoint { get; set; }
-    public Point StartPoint { get; set; }
-    public Point EndPoint { get; set; }
 }
