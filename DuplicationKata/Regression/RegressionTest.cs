@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using ApprovalTests;
+using ApprovalTests.Combinations;
 using ApprovalTests.Reporters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -58,25 +59,20 @@ namespace DuplicationKata.Regression
         [TestMethod]
         public void test32()
         {
-            // Arrange
+            CombinationApprovals.VerifyAllCombinations(
+                GetSegmentIndex,
+                new LineListType[] { LineListType.DestinationVertical },
+                new List<LineSegment>[] {new List<LineSegment>(){new LineSegment{
+                        StartPoint = new Point { X = 2, Y = 3 },
+                        EndPoint = new Point { X = 2, Y = 3 },
+                        GenerationPoint = new Point { X = 2, Y = 3 }}}},
+                new Point[] { new Point { X = 2, Y = 3 } });
+        }
+
+        private static string GetSegmentIndex(LineListType lineListType, List<LineSegment> lineSegments, Point point)
+        {
             var indexCalculator = new Lesson32();
-            LineListType listType = LineListType.DestinationVertical;
-            List<LineSegment> lineSegments = new List<LineSegment>()
-            {
-                new LineSegment
-                {
-                    StartPoint = new Point { X = 2, Y = 3 },
-                    EndPoint = new Point { X = 2, Y = 3 },
-                    GenerationPoint = new Point { X = 2, Y = 3 }
-                }
-            };
-            Point point = new Point { X = 2, Y = 3 };
-            
-            // Act
-            var result = indexCalculator.GetSegmentIndex(listType, lineSegments, point);
-            
-            // Assert
-            Approvals.Verify(result);
+            return indexCalculator.GetSegmentIndex(lineListType, lineSegments, point).ToString();
         }
     }
 }

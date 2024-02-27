@@ -1,1 +1,1 @@
-﻿0
+﻿[DestinationVertical,System.Collections.Generic.List`1[DuplicationKata.LineSegment],{X=2,Y=3}] => 0
