@@ -80,11 +80,34 @@ namespace DuplicationKata.Regression
                         new LineSegment{
                             StartPoint = new Point { X = 1, Y = 2 },
                             EndPoint = new Point { X = 3, Y = 4 },
-                            GenerationPoint = new Point { X = 5, Y = 6 }},
+                            GenerationPoint = new Point { X = 5, Y = 6 }}}),
+                    new SegmentList(new List<LineSegment>{
                         new LineSegment{
-                            StartPoint = new Point { X = 9, Y = 10 },
-                            EndPoint = new Point { X = 11, Y = 12 },
-                            GenerationPoint = new Point { X = 13, Y = 14 }}})
+                            StartPoint = new Point { X = 9, Y = 8888 },
+                            EndPoint = new Point { X = 11, Y = 99999 },
+                            GenerationPoint = new Point { X = 7776, Y = 14 }},
+                        new LineSegment{
+                            StartPoint = new Point { X = 7777, Y = 10 },
+                            EndPoint = new Point { X = 99999, Y = 12 },
+                            GenerationPoint = new Point { X = 13, Y = 8887 }}}),
+                    new SegmentList(new List<LineSegment>{
+                        new LineSegment{
+                            StartPoint = new Point { X = 9, Y = 8888 },
+                            EndPoint = new Point { X = 11, Y = 999 },
+                            GenerationPoint = new Point { X = 7777, Y = 14 }},
+                        new LineSegment{
+                            StartPoint = new Point { X = 7777, Y = 10 },
+                            EndPoint = new Point { X = 999, Y = 12 },
+                            GenerationPoint = new Point { X = 13, Y = 8888 }}}),
+                    new SegmentList(new List<LineSegment>{
+                        new LineSegment{
+                            StartPoint = new Point { X = 9, Y = 8889 },
+                            EndPoint = new Point { X = 11, Y = 99999 },
+                            GenerationPoint = new Point { X = 7777, Y = 14 }},
+                        new LineSegment{
+                            StartPoint = new Point { X = 7778, Y = 10 },
+                            EndPoint = new Point { X = 99999, Y = 12 },
+                            GenerationPoint = new Point { X = 13, Y = 8888 }}})
                 },
                 new Point[] {new Point { X = 7777, Y = 8888 }});
         }
