@@ -65,10 +65,6 @@ namespace DuplicationKata.Regression
                 new LineListType[] {LineListType.DestinationVertical, LineListType.DestinationHorizontal, LineListType.SourceHorizontal},
                 new SegmentList[] {new SegmentList(new List<LineSegment>{
                         new LineSegment{
-                            StartPoint = new Point { X = 1, Y = 2 },
-                            EndPoint = new Point { X = 3, Y = 4 },
-                            GenerationPoint = new Point { X = 5, Y = 6 }},
-                        new LineSegment{
                             StartPoint = new Point { X = 9, Y = 8888 },
                             EndPoint = new Point { X = 11, Y = 99999 },
                             GenerationPoint = new Point { X = 7777, Y = 14 }},
