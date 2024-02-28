@@ -2,6 +2,7 @@
 using ApprovalTests;
 using ApprovalTests.Combinations;
 using ApprovalTests.Reporters;
+using ApprovalUtilities.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DuplicationKata.Regression
@@ -59,27 +60,31 @@ namespace DuplicationKata.Regression
         [TestMethod]
         public void test32()
         {
-            // CombinationApprovals.VerifyAllCombinations(
-            //     GetSegmentIndex,
-            //     new LineList[] {new LineList(
-            //         LineListType.DestinationVertical,
-            //         new List<LineSegment>(){new LineSegment{
-            //                 StartPoint = new Point { X = 1, Y = 2 },
-            //                 EndPoint = new Point { X = 3, Y = 4 },
-            //                 GenerationPoint = new Point { X = 5, Y = 6 }}},
-            //         new Point { X = 7, Y = 8 })});
-            
             CombinationApprovals.VerifyAllCombinations(
                 GetSegmentIndex,
-                new LineListType[] {LineListType.DestinationVertical},
-                new int[] {1},
-                new int[] {2},
-                new int[] {3},
-                new int[] {4},
-                new int[] {5},
-                new int[] {6},
-                new int[] {7},
-                new int[] {8});
+                new LineList[] {new LineList(
+                    LineListType.DestinationVertical,
+                    new List<LineSegment>(){new LineSegment{
+                            StartPoint = new Point { X = 1, Y = 2 },
+                            EndPoint = new Point { X = 3, Y = 4 },
+                            GenerationPoint = new Point { X = 5, Y = 6 }},
+                        new LineSegment{
+                            StartPoint = new Point { X = 9, Y = 10 },
+                            EndPoint = new Point { X = 11, Y = 12 },
+                            GenerationPoint = new Point { X = 13, Y = 14 }}},
+                    new Point { X = 7, Y = 8 })});
+            
+            // CombinationApprovals.VerifyAllCombinations(
+            //     GetSegmentIndex,
+            //     new LineListType[] {LineListType.DestinationVertical},
+            //     new int[] {1},
+            //     new int[] {2},
+            //     new int[] {3},
+            //     new int[] {4},
+            //     new int[] {5},
+            //     new int[] {6},
+            //     new int[] {7},
+            //     new int[] {8});
         }
 
         private static string GetSegmentIndex(LineList lineList)
@@ -109,6 +114,27 @@ namespace DuplicationKata.Regression
                 new Point { X = pointX, Y = pointY });
             var indexCalculator = new Lesson32();
             return indexCalculator.GetSegmentIndex(lineList).ToString();
+        }
+    }
+
+    internal class SegmentIndexResult
+    {
+        public LineList LineList { get; }
+        public int Result { get; }
+
+        public SegmentIndexResult(LineList lineList, int result)
+        {
+            LineList = lineList;
+            Result = result;
+        }
+
+        public override string ToString()
+        {
+            var segmentsAsStrings = LineList.Segments.Select(x => x.ToString(LineList.Segments.IndexOf(x), Result));
+            var allSegments = String.Join("\n", segmentsAsStrings.ToArray());
+            return $"\nType: {LineList.Type.ToString()}\n"
+                   + allSegments
+                   + $"\nPoint: ({LineList.Point.X},{LineList.Point.Y})";
         }
     }
 }

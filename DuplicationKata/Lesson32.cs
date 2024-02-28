@@ -54,13 +54,13 @@ namespace DuplicationKata
             Point = point;
         }
 
-        public string ToString()
+        public override string ToString()
         {
-            return $"Type: {Type.ToString()}, "
-            + $"Start: ({Segments[0].StartPoint.X},{Segments[0].StartPoint.Y}), "
-            + $"End: ({Segments[0].EndPoint.X},{Segments[0].EndPoint.Y}), "
-            + $"Generation: ({Segments[0].GenerationPoint.X},{Segments[0].GenerationPoint.Y}), "
-            + $"Point: ({Point.X},{Point.Y})";
+            var segmentsAsStrings = Segments.Select(x => x.ToString(Segments.IndexOf(x)));
+            var allSegments = String.Join("\n", segmentsAsStrings.ToArray());
+            return $"Type: {Type.ToString()}\n"
+                   + allSegments
+                   + $"\nPoint: ({Point.X},{Point.Y})";
         }
     }
 
@@ -76,5 +76,23 @@ namespace DuplicationKata
         public Point StartPoint { get; set; }
         public Point EndPoint { get; set; }
         public Point GenerationPoint { get; set; }
+
+        public override string ToString()
+        {
+            return $"Start: ({StartPoint.X},{StartPoint.Y}), "
+                   + $"End: ({EndPoint.X},{EndPoint.Y}), "
+                   + $"Generation: ({GenerationPoint.X},{GenerationPoint.Y})";
+        }
+
+        public string ToString(int index, int resultIndex)
+        {
+            string marker = index == resultIndex ? "RESULT: " : "        ";
+            return $"{marker}{index}: {ToString()}";
+        }
+
+        public string ToString(int index)
+        {
+            return $"{index}: {ToString()}";
+        }
     }
 }
