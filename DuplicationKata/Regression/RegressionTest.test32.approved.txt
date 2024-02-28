@@ -1,6 +1,10 @@
 ﻿[DestinationVertical,
-0: Start: (9,8888), End: (11,99999), Generation: (7777,14)
-1: Start: (7777,10), End: (99999,12), Generation: (13,8888)
+0: Start: (9,8888), End: (11,8888), Generation: (7777,14)
+1: Start: (7777,10), End: (7777,12), Generation: (13,8888)
+,{X=7777,Y=8888}] => 1
+[DestinationVertical,
+0: Start: (9,8887), End: (11,8889), Generation: (7777,14)
+1: Start: (7776,10), End: (7778,12), Generation: (13,8888)
 ,{X=7777,Y=8888}] => 1
 [DestinationVertical,
 0: Start: (1,2), End: (3,4), Generation: (5,6)
@@ -18,8 +22,12 @@
 1: Start: (7778,10), End: (99999,12), Generation: (13,8888)
 ,{X=7777,Y=8888}] => -1
 [DestinationHorizontal,
-0: Start: (9,8888), End: (11,99999), Generation: (7777,14)
-1: Start: (7777,10), End: (99999,12), Generation: (13,8888)
+0: Start: (9,8888), End: (11,8888), Generation: (7777,14)
+1: Start: (7777,10), End: (7777,12), Generation: (13,8888)
+,{X=7777,Y=8888}] => 0
+[DestinationHorizontal,
+0: Start: (9,8887), End: (11,8889), Generation: (7777,14)
+1: Start: (7776,10), End: (7778,12), Generation: (13,8888)
 ,{X=7777,Y=8888}] => 0
 [DestinationHorizontal,
 0: Start: (1,2), End: (3,4), Generation: (5,6)
@@ -37,8 +45,12 @@
 1: Start: (7778,10), End: (99999,12), Generation: (13,8888)
 ,{X=7777,Y=8888}] => -1
 [SourceHorizontal,
-0: Start: (9,8888), End: (11,99999), Generation: (7777,14)
-1: Start: (7777,10), End: (99999,12), Generation: (13,8888)
+0: Start: (9,8888), End: (11,8888), Generation: (7777,14)
+1: Start: (7777,10), End: (7777,12), Generation: (13,8888)
+,{X=7777,Y=8888}] => 0
+[SourceHorizontal,
+0: Start: (9,8887), End: (11,8889), Generation: (7777,14)
+1: Start: (7776,10), End: (7778,12), Generation: (13,8888)
 ,{X=7777,Y=8888}] => 0
 [SourceHorizontal,
 0: Start: (1,2), End: (3,4), Generation: (5,6)
