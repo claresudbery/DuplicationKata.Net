@@ -53,6 +53,15 @@ namespace DuplicationKata
             Segments = lineSegments;
             Point = point;
         }
+
+        public string ToString()
+        {
+            return $"Type: {Type.ToString()}, "
+            + $"Start: ({Segments[0].StartPoint.X},{Segments[0].StartPoint.Y}), "
+            + $"End: ({Segments[0].EndPoint.X},{Segments[0].EndPoint.Y}), "
+            + $"Generation: ({Segments[0].GenerationPoint.X},{Segments[0].GenerationPoint.Y}), "
+            + $"Point: ({Point.X},{Point.Y})";
+        }
     }
 
     public enum LineListType
