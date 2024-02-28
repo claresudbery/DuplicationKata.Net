@@ -11,6 +11,13 @@ namespace DuplicationKata
             var point = lineList.Point;
             int segmentIndex = 0;
 
+            return GetSegmentIndex(listType, lineSegments, point);
+        }
+
+        public int GetSegmentIndex(LineListType listType, List<LineSegment> lineSegments, Point point)
+        {
+            int segmentIndex = 0;
+
             if (listType == LineListType.SourceHorizontal || listType == LineListType.DestinationHorizontal)
             {
                 for (int i = 0; i < lineSegments.Count; ++i)
