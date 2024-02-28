@@ -6,16 +6,19 @@ namespace DuplicationKata
     {
         public int GetSegmentIndex(LineList lineList)
         {
+            var listType = lineList.Type;
+            var lineSegments = lineList.Segments;
+            var point = lineList.Point;
             int segmentIndex = 0;
 
-            if (lineList.Type == LineListType.SourceHorizontal || lineList.Type == LineListType.DestinationHorizontal)
+            if (listType == LineListType.SourceHorizontal || listType == LineListType.DestinationHorizontal)
             {
-                for (int i = 0; i < lineList.Segments.Count; ++i)
+                for (int i = 0; i < lineSegments.Count; ++i)
                 {
-                    var lineSegment = lineList.Segments[i];
-                    if (lineSegment.GenerationPoint.X == lineList.Point.X 
-                        && lineList.Point.Y >= lineSegment.StartPoint.Y 
-                        && lineList.Point.Y <= lineSegment.EndPoint.Y)
+                    var lineSegment = lineSegments[i];
+                    if (lineSegment.GenerationPoint.X == point.X 
+                        && point.Y >= lineSegment.StartPoint.Y 
+                        && point.Y <= lineSegment.EndPoint.Y)
                     {
                         segmentIndex = i;
                         break;
@@ -24,12 +27,12 @@ namespace DuplicationKata
             }
             else
             {
-                for (int i = 0; i < lineList.Segments.Count; ++i)
+                for (int i = 0; i < lineSegments.Count; ++i)
                 {
-                    var lineSegment = lineList.Segments[i];
-                    if (lineSegment.GenerationPoint.Y == lineList.Point.Y 
-                        && lineList.Point.X >= lineSegment.StartPoint.X 
-                        && lineList.Point.X <= lineSegment.EndPoint.X)
+                    var lineSegment = lineSegments[i];
+                    if (lineSegment.GenerationPoint.Y == point.Y 
+                        && point.X >= lineSegment.StartPoint.X 
+                        && point.X <= lineSegment.EndPoint.X)
                     {
                         segmentIndex = i;
                         break;
