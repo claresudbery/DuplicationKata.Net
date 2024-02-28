@@ -75,7 +75,17 @@ namespace DuplicationKata.Regression
                         new LineSegment{
                             StartPoint = new Point { X = 7777, Y = 10 },
                             EndPoint = new Point { X = 99999, Y = 12 },
-                            GenerationPoint = new Point { X = 13, Y = 8888 }}})},
+                            GenerationPoint = new Point { X = 13, Y = 8888 }}}),
+                    new SegmentList(new List<LineSegment>{
+                        new LineSegment{
+                            StartPoint = new Point { X = 1, Y = 2 },
+                            EndPoint = new Point { X = 3, Y = 4 },
+                            GenerationPoint = new Point { X = 5, Y = 6 }},
+                        new LineSegment{
+                            StartPoint = new Point { X = 9, Y = 10 },
+                            EndPoint = new Point { X = 11, Y = 12 },
+                            GenerationPoint = new Point { X = 13, Y = 14 }}})
+                },
                 new Point[] {new Point { X = 7777, Y = 8888 }});
         }
 

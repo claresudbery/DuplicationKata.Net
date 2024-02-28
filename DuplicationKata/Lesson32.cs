@@ -6,7 +6,7 @@ namespace DuplicationKata
     {
         public int GetSegmentIndex(LineListType listType, List<LineSegment> lineSegments, Point point)
         {
-            int segmentIndex = 0;
+            int segmentIndex = -1;
 
             if (listType == LineListType.SourceHorizontal || listType == LineListType.DestinationHorizontal)
             {
