@@ -62,7 +62,7 @@ namespace DuplicationKata.Regression
         {   
             CombinationApprovals.VerifyAllCombinations(
                 GetSegmentIndex,
-                new LineListType[] {LineListType.DestinationVertical},
+                new LineListType[] {LineListType.DestinationVertical, LineListType.DestinationHorizontal, LineListType.SourceHorizontal},
                 new SegmentList[] {new SegmentList(new List<LineSegment>{
                         new LineSegment{
                             StartPoint = new Point { X = 1, Y = 2 },
