@@ -4,16 +4,6 @@ namespace DuplicationKata
 {
     public class Lesson32
     {
-        public int GetSegmentIndex(LineList lineList)
-        {
-            var listType = lineList.Type;
-            var lineSegments = lineList.Segments;
-            var point = lineList.Point;
-            int segmentIndex = 0;
-
-            return GetSegmentIndex(listType, lineSegments, point);
-        }
-
         public int GetSegmentIndex(LineListType listType, List<LineSegment> lineSegments, Point point)
         {
             int segmentIndex = 0;
